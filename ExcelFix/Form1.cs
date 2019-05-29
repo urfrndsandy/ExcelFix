@@ -24,73 +24,42 @@ namespace ExcelFix
            excelap. Application excelApp = new excelap. Application();
             string filepath = @"\\SERVER1\Scan\Copy of (50 employees) Master of Form 16 Only Part  B for AY 2019-20.xlsm";
             Microsoft.Office.Interop.Excel.Workbook workBook = excelApp.Workbooks.Open(filepath);
-
+           // var valx;
             foreach (Worksheet sheet in workBook.Worksheets)
             {
                 //  string val = sheet.Rows[0][1];
-                if (sheet.Name != "Deductor's Sheet" || sheet.Name!= "Salary Details")
+                if (sheet.Name != "Deductor's Sheet" && sheet.Name!= "Salary Details")
                 {
-                    try
-                    {
-                        int i;
-                        int j;
-                        int k;
-                        int l;
-                        int m;
-                        int n;
-                        int i1;
-                        int i2;
-                        int i3;
-                        int i4;
-                        int i5;
-                        int i6;
-                        ;
- 
-                        for (i = 65; i <= 66; i++)
+                  
+                       
+                      // sheet.Rows.Cells[11][13] = "2019-2020";
+
+                        for (int i = 85; i <= 90; i++)
+
                         {
-                            for (j = 65; j <= 66; j++)
+                        try
+                        {
+                            var valx = sheet.Rows.Cells[1][i].Value.ToString();
+
+
+                            if (valx==("(a) Standard Deduction"))
                             {
-                                for (k = 65; k <= 66; k++)
-                                {
-                                    for (l = 65; l <= 66; l++)
-                                    {
-                                        for (m = 65; m <= 66; m++)
-                                        {
-                                            for (i1 = 65; i1 <= 66; i1++)
-                                            {
-                                                for (i2 = 65; i2 <= 66; i2++)
-                                                {
-                                                    for (i3 = 65; i3 <= 66; i3++)
-                                                    {
-                                                        for (i4 = 65; i4 <= 66; i4++)
-                                                        {
-                                                            for (i5 = 65; i5 <= 66; i5++)
-                                                            {
-                                                                for (i6 = 65; i6 <= 66; i6++)
-                                                                {
-                                                                    for (n = 32; n <= 126; n++)
-                                                                     sheet.Unprotect ( i.ToString() + j.ToString() +k.ToString() + l.ToString() + m.ToString() + i1.ToString() + Strings.Chr(i2) + Strings.Chr(i3) + Strings.Chr(i4) + Strings.Chr(i5) + Strings.Chr(i6) + Strings.Chr(n));
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
+                                sheet.Rows.Cells[1][i] = "     (a) Standard Deduction";
                             }
+                           // MessageBox.Show(sheet.Name + ":" + valx);
                         }
-                    }
-                       sheet.Rows.Cells[11][13] = "2019-2020";
-                    }
-                    catch { }
+                        catch { }
+
+                        }
+                    
+
+                  
                 }
              
             }
             workBook.Save();
-            excelApp.Quit();
-            update(filepath);
+          excelApp.Quit();
+           // update(filepath);
         }
         private void button1_Click(object sender, EventArgs e)
         {
